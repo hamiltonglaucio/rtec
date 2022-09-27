@@ -41,4 +41,15 @@ class User extends Authenticatable implements AuditableContracts
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $dates = [
+        "created_at",
+        "updated_at",
+        "email_verified_at"
+    ];
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class, 'user_id', 'id');
+    }
 }
